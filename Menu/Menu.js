@@ -55,8 +55,7 @@ function menuCreator(array) {
   const menuButton = document.querySelector('.menu-button');
   menuButton.addEventListener('click', () => {
     console.log('the menu image is being clicked');
-    console.log(`The menu is ${menu}`);
-    menu.classList.toggle('.menu--open');
+    menu.classList.toggle('menu--open');
   });
 
   return menu;
