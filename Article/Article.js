@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Lambda School Components Assignment',
+    date: 'Sep 3rd, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,3 +128,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articleCreator(data){
+  const article = document.createElement('div');
+  article.classList.add('article');
+  
+  const articleTitle = document.createElement('h2');
+  article.appendChild(articleTitle);
+  articleTitle.textContent = data.title;
+  // console.log(data.title);
+  // console.log(articleTitle.textContent);
+
+  const articleDate = document.createElement('p');
+  articleDate.classList.add('date');
+  article.appendChild(articleDate);
+  articleDate.textContent = data.date;
+
+  const articleFirstPara = document.createElement('p');
+  article.appendChild(articleFirstPara);
+  articleFirstPara.textContent = data.firstParagraph;
+
+  const articleSecondPara = document.createElement('p');
+  article.appendChild(articleSecondPara);
+  articleSecondPara.textContent = data.secondParagraph;
+
+  const articleThirdPara = document.createElement('p');
+  article.appendChild(articleThirdPara);
+  articleThirdPara.textContent = data.thirdParagraph;
+
+  const articleSpan = document.createElement('span');
+  articleSpan.classList.add('expandButton');
+  article.appendChild(articleSpan);
+  articleSpan.textContent = '\u25bc';
+  articleSpan.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+  
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+
+data.forEach(feed => {
+  articles.appendChild(articleCreator(feed));
+})
