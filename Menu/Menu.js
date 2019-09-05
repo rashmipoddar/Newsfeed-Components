@@ -40,13 +40,9 @@ function menuCreator(array) {
 
   const menuUnorderedList = document.createElement('ul');
   menu.appendChild(menuUnorderedList);
-  // console.log(menuUnorderedList);
   
-  
-  // let menuListItem = null;
-
   array.forEach(item => {
-    let menuListItem = document.createElement('li');
+    const menuListItem = document.createElement('li');
     menuListItem.textContent = item;
     menuUnorderedList.appendChild(menuListItem); 
     console.log(menuUnorderedList); 
@@ -54,7 +50,6 @@ function menuCreator(array) {
 
   const menuButton = document.querySelector('.menu-button');
   menuButton.addEventListener('click', () => {
-    console.log('the menu image is being clicked');
     menu.classList.toggle('menu--open');
   });
 
